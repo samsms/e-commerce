@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: GATEWAY-SERVICE
+  cloud:
+    gateway:
+      routes:
+        - id : productModule
+          uri : lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/products/**
+        - id: usersModule
+          uri: lb://USERS-SERVICE
+          predicates:
+            - Path=/users/**
+
+server:
+  port: 8080
